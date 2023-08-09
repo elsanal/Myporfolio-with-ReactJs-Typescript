@@ -17,6 +17,7 @@ module.exports = {
       'red': '#EF1111',
       'gray': '#302424',
       'recent-bg': '#F1EDE4',
+      'blue':'#03A9F4'
       
     },
     extend: {

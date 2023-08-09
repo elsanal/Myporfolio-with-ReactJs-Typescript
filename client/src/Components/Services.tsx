@@ -8,35 +8,24 @@ import {
   query
 } from "firebase/firestore";
 import ReactHtmlParser from "html-react-parser";
+import connect_to_database from "../mongodb";
 
 
-
-interface Post {
-  id: string;
-  content: Service;
-}
 
 const Services = () => {
-  const [services, setServices] = useState<Post[]>([]);
-
+  const [services, setServices] = useState<any>([]);
+  
   const getPost = async () => {
     try {
-      const getQuery = query(service, orderBy("createdate", "asc"));
-      const postDocs = await getDocs(getQuery);
-      console.log(postDocs.docs[0])
-      setServices(
-          postDocs.docs.map((doc) => {
-            return { id: doc.id, content: doc.data() };
-          })
-        );
+      connect_to_database({collection:'service', setResponse:setServices});
     } catch (error) {
       alert("there is an error");
     }
   };
-
+ 
   useEffect(() => {
     Aos.init();
-    getPost();
+     getPost();
   }, []);
 
   return (
@@ -53,7 +42,7 @@ const Services = () => {
         className="flex flex-row flex-wrap px-2 mt-4 
         self-around w-full"
       >
-        {services.map((item, index) => (
+        {services.map((item:any, index:number) => (
           <div
             data-aos="flip-left"
             data-aos-duration="1000"
@@ -62,10 +51,10 @@ const Services = () => {
           font-roboto m-2 w-80 rounded hover:scale-95"
           >
             <div className="self-center text-2xl p-2 bg-white w-full">
-              {item.content.title}
+              {item.title}
             </div>
             <svg
-              xmlns={item.content.icon_id}
+              xmlns={item.icon_id}
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1"
@@ -79,7 +68,7 @@ const Services = () => {
               />
             </svg>
             <div className="self-start text-left text-sm bg-gray text-white p-2 rounded-b-md">
-              {ReactHtmlParser(item.content.description)}
+              {ReactHtmlParser(item.description)}
             </div>
           </div>
         ))}

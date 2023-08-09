@@ -4,6 +4,7 @@ import {project} from "../firebase";
 import {  getDocs } from "firebase/firestore";
 import {Project} from "../models";
 import { Link } from "react-router-dom";
+import connect_to_database from "../mongodb";
 
 interface Post{
   id : string;
@@ -12,20 +13,18 @@ interface Post{
 
 const Portfolio = () => {
   
-  const [posts, setPosts] = useState<Post[]>([]);
-  const getPost = async ()=>{
-    const postDocs = await getDocs(project);
-    setPosts(postDocs.docs.map((doc)=>{
-      return {id: doc.id, content:doc.data()}
-    }))
-  }
-
-
-
+  const [posts, setPosts] = useState<any>([]);
+  const getPost = async () => {
+    try {
+      connect_to_database({collection:'project', setResponse:setPosts});
+    } catch (error) {
+      alert("there is an error");
+    }
+  };
+  getPost();
   useEffect(() => {
     Aos.init();
     getPost();
-    
   }, []);
 
   return (
@@ -44,7 +43,7 @@ const Portfolio = () => {
       </span>
       <div className="flex flex-row flex-wrap px-2 mt-4 
        self-around ">
-        {posts.map((item) => (
+        {posts.map((item:any) => (
           <div
             data-aos="zoom-in-up"
             data-aos-duration="1000"
@@ -53,9 +52,9 @@ const Portfolio = () => {
           font-roboto m-2 p-2 lg:max-w-md "
           >
             <Link to={"/details/" + item.id} key={item.id}>
-            <span className="self-start text-2xl">{item.content.title}</span>
-            <div className="self-start text-xl">Platform : {item.content.platform}</div>
-            <img className="self-center w-full pt-2" src={item.content.images[0].src.src} alt="#" />
+            <span className="self-start text-2xl">{item.title}</span>
+            <div className="self-start text-xl">Platform : {item.platform}</div>
+            <img className="self-center w-full pt-2" src={item.image[0].base64String} alt="#" />
             </Link>
           </div>
         ))}

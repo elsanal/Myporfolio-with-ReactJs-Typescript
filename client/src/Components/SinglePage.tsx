@@ -8,7 +8,7 @@ import Aos from "aos";
 
 
 const SinglePage = () => {
-  
+
   useEffect(() => {
     Aos.init();
   }, []);

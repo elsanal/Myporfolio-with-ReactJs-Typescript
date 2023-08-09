@@ -3,6 +3,7 @@ import { getDocs } from 'firebase/firestore';
 import { about } from '../firebase';
 import Aos from 'aos';
 import { About } from '../models';
+import connect_to_database from '../mongodb';
 
 interface Post{
   id : string;
@@ -11,17 +12,18 @@ interface Post{
 
 const Contact = () => {
 
-  const [contacts, setContacts] = useState<Post[]>([]);
-  const getPost = async ()=>{
-    const postDocs = await getDocs(about);
-    setContacts(postDocs.docs.map((doc)=>{
-      return {id: doc.id, content:doc.data()}
-    }))
-  }
+  const [contacts, setContacts] = useState<any[]>([]);
+  const getPost = async () => {
+    try {
+      connect_to_database({collection:'about', setResponse:setContacts});
+    } catch (error) {
+      alert("there is an error");
+    }
+  };
 
   useEffect(() => {
     Aos.init();
-    getPost();
+     getPost();
   }, []);
 
   return (
@@ -50,20 +52,20 @@ const Contact = () => {
               <textarea rows={10} placeholder='Enter your message' className='w-full h-10 
               outline outline-1 outline-black hover:outline-yellow mb-5 p-3'
               />
-              {/* <button type="button" className="bg-orange p-3 mb-3" disabled>
+              <button type="button" className="bg-orange p-3 mb-3" disabled>
                 Send message
-                </button> */}
+                </button>
             </div>
             <div className=" text-black w-full sm:w-1/2 p-4 bg-orange-clair self-top ">
                 {
-                  contacts.map((contact)=>(
+                  contacts.map((contact:any)=>(
                     <div className="flex flex-col   w-full p-3 mt-3">
-                    <div className="mb-10">📞 : {contact.content.phone}</div>
-                    <div className="mb-10">✉️ : {contact.content.email}</div>
+                    <div className="mb-10">📞 : {contact.phone}</div>
+                    <div className="mb-10">✉️ : {contact.email}</div>
                     <div className="flex flex-row justify-around ">                      
-                      {contact.content.social_network.map((item)=>(
-                      <a href={item.social_link}>
-                        <img src={item.src.src} className='w-12 h-12 rounded-full' alt=""/>
+                      {contact.network.map((item:any)=>(
+                      <a href={item.link}> {item.name}
+                        {/* <img src={item.src.src} className='w-12 h-12 rounded-full' alt=""/> */}
                       </a>
                     ))}
                     </div>
