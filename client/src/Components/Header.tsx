@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { HashLink} from "react-router-hash-link";
 import Aos from "aos";
-import { getDocs, orderBy, query } from "firebase/firestore";
-import { resume } from "../firebase";
-import { Resume } from "../models";
+
+
 import DownloadPDF from "./Download";
 
 
@@ -12,29 +11,17 @@ type Props = {
   tos: string[];
 };
 
-interface Post{
-  id : string;
-  content: Resume;
-}
 
 
 const Header: React.FC<Props> = ({ names, tos }: Props) => {
   const [toggle, setToggle] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [cv, setCV] = useState<Post[]>([]);
+  const [cv, setCV] = useState<any[]>([]);
 
-const getPost = async ()=>{
-    const getQuery = query(resume, orderBy("createdate", "asc"))
-    const postDocs = await getDocs(getQuery);
-    setCV(postDocs.docs.map((doc)=>{
-      return {id: doc.id, content:doc.data()}
-    }))
-
-  }
 
   useEffect(() => {
     Aos.init();
-    getPost();
+
   }, []);
 
   return (

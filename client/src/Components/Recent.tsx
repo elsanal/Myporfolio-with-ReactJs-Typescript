@@ -1,15 +1,7 @@
 import { useEffect, useState } from "react";
 import Aos from "aos";
-import { Project } from "../models";
-import { project } from "../firebase";
-import { getDocs, orderBy, limit, query } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import connect_to_database from "../mongodb";
-
-interface Post {
-  id: string;
-  content: Project;
-}
 
 const Recent = () => {
   const [posts, setPosts] = useState<any>([]);

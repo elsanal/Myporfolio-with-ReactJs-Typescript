@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { getDocs } from 'firebase/firestore';
-import { about } from '../firebase';
 import Aos from 'aos';
-import { About } from '../models';
 import connect_to_database from '../mongodb';
-
-interface Post{
-  id : string;
-  content: About;
-}
 
 const Contact = () => {
 

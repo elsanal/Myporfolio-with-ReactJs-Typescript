@@ -1,19 +1,7 @@
 import { useEffect, useState } from "react";
-import { Project } from "../models";
 import { Link, useParams } from "react-router-dom";
 import ReactHtmlParser from "html-react-parser";
-import {
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
-import { project } from "../firebase";
-import connect_to_database from "../mongodb";
 
-interface Post {
-  id: string;
-  content: Project;
-}
 
 const Details = () => {
 
@@ -26,8 +14,6 @@ const Details = () => {
   
   const [detail, setDetail] = useState<any>({});
 
-
-  
   useEffect(() => {
     const getPost = async (postId:string|undefined) => {
       await fetch(`${process.env.REACT_APP_API_URL}/project/${postId}`)

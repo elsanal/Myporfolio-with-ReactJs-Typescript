@@ -1,15 +1,8 @@
 import { useEffect, useState } from "react";
 import Aos from "aos";
-import {project} from "../firebase";
-import {  getDocs } from "firebase/firestore";
-import {Project} from "../models";
 import { Link } from "react-router-dom";
 import connect_to_database from "../mongodb";
 
-interface Post{
-  id : string;
-  content: Project;
-}
 
 const Portfolio = () => {
   

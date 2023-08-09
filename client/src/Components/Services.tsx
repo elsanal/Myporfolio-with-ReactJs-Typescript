@@ -1,12 +1,5 @@
 import Aos from "aos";
 import { useEffect, useState } from "react";
-import { Service } from "../models";
-import { service } from "../firebase";
-import {
-  getDocs,
-  orderBy,
-  query
-} from "firebase/firestore";
 import ReactHtmlParser from "html-react-parser";
 import connect_to_database from "../mongodb";
 
