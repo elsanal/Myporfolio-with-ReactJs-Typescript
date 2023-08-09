@@ -22,7 +22,7 @@ const connect_to_database = async({collection, setResponse}:Props)=>{
         const decodedString = decoder.decode(value);
         try {
           const res = JSON.parse(decodedString);
-          console.log(res)
+          
           setResponse(res);
           
         } catch (error) {

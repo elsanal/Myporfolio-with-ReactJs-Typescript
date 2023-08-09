@@ -24,7 +24,6 @@ const Portfolio = () => {
   getPost();
   useEffect(() => {
     Aos.init();
-    getPost();
   }, []);
 
   return (

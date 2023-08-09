@@ -34,7 +34,7 @@ const Details = () => {
       .then(((response: { json: () => any; }) => response.json())) 
       .then((data: any) => {
         setDetail(data)
-        console.log(data)
+
       })
     };
    getPost(id);

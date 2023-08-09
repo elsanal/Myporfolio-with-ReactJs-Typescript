@@ -22,10 +22,10 @@ const Services = () => {
       alert("there is an error");
     }
   };
- 
+  getPost();
   useEffect(() => {
     Aos.init();
-     getPost();
+  
   }, []);
 
   return (

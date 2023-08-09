@@ -24,10 +24,10 @@ const Recent = () => {
     var date = new Date(createdate.substring(0, 9));
     return date.toDateString();
   };
-
+  getPost();
   useEffect(() => {
     Aos.init();
-    getPost();
+
   }, []);
 
   return (
