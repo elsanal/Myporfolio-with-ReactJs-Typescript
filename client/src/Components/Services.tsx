@@ -1,25 +1,17 @@
 import Aos from "aos";
 import { useEffect, useState } from "react";
 import ReactHtmlParser from "html-react-parser";
-import connect_to_database from "../mongodb";
-
+import usePathname from "../pathname";
+import getPost from "../mongodb";
 
 
 const Services = () => {
   const [services, setServices] = useState<any>([]);
-  
-  const getPost = async () => {
-    try {
-      connect_to_database({collection:'service', setResponse:setServices});
-    } catch (error) {
-      alert("there is an error");
-    }
-  };
-  getPost();
+  var path = usePathname()
   useEffect(() => {
     Aos.init();
-  
-  }, []);
+    getPost({collection:'service', setResponse:setServices})
+  }, [path, services]);
 
   return (
     <div className="flex flex-col items-center bg-recent-bg text-black w-full h-fit">
@@ -31,7 +23,9 @@ const Services = () => {
         Us a freelancer, you can hire me to build different kind of apps or
         others services that are listed below.
       </span>
-      <div
+      {
+        services.length >0?
+        <div
         className="flex flex-row flex-wrap px-2 mt-4 
         self-around w-full"
       >
@@ -66,6 +60,8 @@ const Services = () => {
           </div>
         ))}
       </div>
+        :<div>Loading...</div>
+      }
     </div>
   );
 };

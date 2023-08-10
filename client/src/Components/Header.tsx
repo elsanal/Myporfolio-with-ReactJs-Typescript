@@ -27,12 +27,12 @@ const Header: React.FC<Props> = ({ names, tos }: Props) => {
   return (
       <nav  className={`bg-orange fixed w-full px-2 sm:px-4 py-2.5 dark:bg-gray-900`}>
       <div className="container flex flex-wrap items-center justify-between mx-auto">
-        {
+        {/* {
           cv.map((doc)=>(
             <DownloadPDF url={doc.content.attachments.src}
                         filename={doc.content.attachments.title}/>
           ))
-        }  
+        }   */}
         <button
           data-collapse-toggle="navbar-default"
           type="button"

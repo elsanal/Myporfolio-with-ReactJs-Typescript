@@ -24,7 +24,7 @@ const Details = () => {
       })
     };
    getPost(id);
-  },[id]);
+  },[detail]);
 
   return (
     <div className="pt-14 max-w-6xl">

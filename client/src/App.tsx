@@ -24,6 +24,10 @@ function App() {
           </div>
           <Routes>
             <Route path="/" element={<SinglePage />} />
+            <Route path="/#recent" element={<SinglePage />} />
+            <Route path="/#portfolio" element={<SinglePage />} />
+            <Route path="/#services" element={<SinglePage />} />
+            <Route path="/#contact" element={<SinglePage />} />
             <Route path="/details/:id" element={<Details />} />
           </Routes>
         </Router>

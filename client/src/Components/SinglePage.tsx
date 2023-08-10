@@ -1,16 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Home from "./Home";
 import Recent from "./Recent";
 import Portfolio from "./Portfolio";
 import Services from "./Services";
 import Contact from "./Contact";
 import Aos from "aos";
+import connect_to_database from "../mongodb";
 
 
 const SinglePage = () => {
-
+  const [posts, setPosts] = useState<any>([]);
+  var i = 0
+  var text = ''
+  while (i < 10) {
+    text += "The number is " + i;
+    i++;
+  }
   useEffect(() => {
     Aos.init();
+    console.log("SinglePage")
   }, []);
    
   return (

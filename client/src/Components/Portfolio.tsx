@@ -2,22 +2,18 @@ import { useEffect, useState } from "react";
 import Aos from "aos";
 import { Link } from "react-router-dom";
 import connect_to_database from "../mongodb";
+import usePathname from "../pathname";
+import getPost from "../mongodb";
 
 
 const Portfolio = () => {
   
   const [posts, setPosts] = useState<any>([]);
-  const getPost = async () => {
-    try {
-      connect_to_database({collection:'project', setResponse:setPosts});
-    } catch (error) {
-      alert("there is an error");
-    }
-  };
-  getPost();
+  var path = usePathname()
   useEffect(() => {
     Aos.init();
-  }, []);
+    getPost({collection:'project', setResponse:setPosts})
+  }, [path, posts]);
 
   return (
     <div className="flex flex-col items-center bg-blur-bg pb-3 text-white w-full h-fit">
@@ -33,7 +29,9 @@ const Portfolio = () => {
         MongoDB. I am currently doing my Master research on Person
         re-identification (Computer Vision).
       </span>
-      <div className="flex flex-row flex-wrap px-2 mt-4 
+      {
+        posts.length > 0?
+        <div className="flex flex-row flex-wrap px-2 mt-4 
        self-around ">
         {posts.map((item:any) => (
           <div
@@ -51,6 +49,8 @@ const Portfolio = () => {
           </div>
         ))}
       </div>
+        :<div>Loading...</div>
+      }
     </div>
   );
 };

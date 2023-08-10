@@ -1,29 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import Aos from 'aos';
-import connect_to_database from '../mongodb';
+import usePathname from '../pathname';
+import getPost from '../mongodb';
 
 const Contact = () => {
 
   const [contacts, setContacts] = useState<any[]>([]);
-  const getPost = async () => {
-    try {
-      connect_to_database({collection:'about', setResponse:setContacts});
-    } catch (error) {
-      alert("there is an error");
-    }
-  };
-  getPost();
+  var path = usePathname()
   useEffect(() => {
     Aos.init();
-
-  }, []);
+    getPost({collection:'about', setResponse:setContacts})
+  }, [path, contacts]);
 
   return (
     <form action="">
       <div className="flex flex-col p-1 items-center bg-white  w-full h-fit ">
         <span className="pt-24 text-5xl font-varela_round font-bold" >Contacts</span>
         <span className="h-1.5 w-24 mt-3 rounded bg-orange self-center"></span>
-        <div className="flex flex-row flex-wrap mt-4 
+        {
+          contacts.length>0?
+          <div className="flex flex-row flex-wrap mt-4 
             w-full h-fit  justify-between">
             
             <div className="flex flex-col bg-gray h-fit items-start 
@@ -66,7 +62,9 @@ const Contact = () => {
                 }
               
             </div>
-        </div>        
+        </div>  
+          :<div>Loading...</div>
+        }      
       </div>
     </form>  
   )

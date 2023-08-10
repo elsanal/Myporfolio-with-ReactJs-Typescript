@@ -1,26 +1,20 @@
 import { useEffect, useState } from "react";
 import Aos from "aos";
 import { Link } from "react-router-dom";
-import connect_to_database from "../mongodb";
+import usePathname from "../pathname";
+import getPost from "../mongodb";
 
 const Recent = () => {
   const [posts, setPosts] = useState<any>([]);
-  const getPost = async () => {
-    try {
-      connect_to_database({ collection: "project", setResponse: setPosts });
-    } catch (error) {
-      alert("there is an error");
-    }
-  };
   const getDate = (createdate: string) => {
     var date = new Date(createdate.substring(0, 9));
     return date.toDateString();
   };
-  getPost();
+  var path = usePathname()
   useEffect(() => {
     Aos.init();
-
-  }, []);
+    getPost({ collection: "project", setResponse: setPosts });
+  }, [posts, path]);
 
   return (
     <div className="flex flex-col pb-5 items-center bg-recent-bg text-black w-full h-fit">
@@ -37,7 +31,9 @@ const Recent = () => {
         project is my master research project in which I am building person
         re-identification AI model. And the last project is about a bus tracker.
       </span>
-      <div
+      {
+        posts.length>0?
+        <div
         className="flex flex-row flex-wrap px-2 mt-4 
        self-around "
       >
@@ -63,6 +59,8 @@ const Recent = () => {
           </div>
         ))}
       </div>
+        :<div>Loading...</div>
+      }
     </div>
   );
 };
