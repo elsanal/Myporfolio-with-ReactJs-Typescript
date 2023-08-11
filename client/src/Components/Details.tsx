@@ -20,7 +20,6 @@ const Details = () => {
       .then(((response: { json: () => any; }) => response.json())) 
       .then((data: any) => {
         setDetail(data)
-
       })
     };
    getPost(id);

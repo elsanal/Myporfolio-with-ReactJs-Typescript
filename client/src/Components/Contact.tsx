@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Aos from 'aos';
-import usePathname from '../pathname';
 import getPost from '../mongodb';
 
 const Contact = () => {
 
   const [contacts, setContacts] = useState<any[]>([]);
-  var path = usePathname()
+
   useEffect(() => {
     Aos.init();
-    getPost({collection:'about', setResponse:setContacts})
-  }, [path, contacts]);
+    getPost({collection:'about', setResponse:setContacts});
+  }, []);
 
   return (
     <form action="">

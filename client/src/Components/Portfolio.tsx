@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
 import Aos from "aos";
 import { Link } from "react-router-dom";
-import connect_to_database from "../mongodb";
-import usePathname from "../pathname";
 import getPost from "../mongodb";
 
 
 const Portfolio = () => {
   
   const [posts, setPosts] = useState<any>([]);
-  var path = usePathname()
+
   useEffect(() => {
     Aos.init();
     getPost({collection:'project', setResponse:setPosts})
-  }, [path, posts]);
+  }, []);
 
   return (
     <div className="flex flex-col items-center bg-blur-bg pb-3 text-white w-full h-fit">

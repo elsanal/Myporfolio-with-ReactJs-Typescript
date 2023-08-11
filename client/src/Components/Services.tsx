@@ -1,17 +1,16 @@
 import Aos from "aos";
 import { useEffect, useState } from "react";
 import ReactHtmlParser from "html-react-parser";
-import usePathname from "../pathname";
 import getPost from "../mongodb";
 
 
 const Services = () => {
   const [services, setServices] = useState<any>([]);
-  var path = usePathname()
   useEffect(() => {
     Aos.init();
     getPost({collection:'service', setResponse:setServices})
-  }, [path, services]);
+    console.log('service')
+  }, []);
 
   return (
     <div className="flex flex-col items-center bg-recent-bg text-black w-full h-fit">

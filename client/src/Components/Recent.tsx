@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Aos from "aos";
 import { Link } from "react-router-dom";
-import usePathname from "../pathname";
 import getPost from "../mongodb";
 
 const Recent = () => {
@@ -10,11 +9,11 @@ const Recent = () => {
     var date = new Date(createdate.substring(0, 9));
     return date.toDateString();
   };
-  var path = usePathname()
+
   useEffect(() => {
     Aos.init();
     getPost({ collection: "project", setResponse: setPosts });
-  }, [posts, path]);
+  }, []);
 
   return (
     <div className="flex flex-col pb-5 items-center bg-recent-bg text-black w-full h-fit">
