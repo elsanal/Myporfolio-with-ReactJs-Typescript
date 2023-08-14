@@ -13,7 +13,7 @@ const Services = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center bg-recent-bg text-black w-full h-fit">
+    <div className="flex flex-col items-center bg-grey text-black w-full h-fit">
       <span className="pt-20 text-5xl font-varela_round font-bold">
         Services
       </span>

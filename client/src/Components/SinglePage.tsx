@@ -5,6 +5,7 @@ import Portfolio from "./Portfolio";
 import Services from "./Services";
 import Contact from "./Contact";
 import Aos from "aos";
+import Resume from "./Resume";
 
 
 
@@ -23,6 +24,9 @@ const SinglePage = () => {
       </section>
       <section id="portfolio" data-aos="fade-down" data-aos-duration="1000" data-aos-mirror="true">
         <Portfolio/>
+      </section>
+      <section id="portfolio" data-aos="fade-down" data-aos-duration="1000" data-aos-mirror="true">
+        <Resume/>
       </section>
       <section id="services" data-aos="zoom-in" data-aos-duration="1000" data-aos-mirror="true">
         <Services />

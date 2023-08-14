@@ -37,8 +37,7 @@ const Portfolio = () => {
             data-aos-duration="1000"
             data-aos-mirror="true"
             className="flex flex-col w-80 shadow shadow-gray rounded bg-white text-black 
-          font-roboto m-2 p-2 lg:max-w-md "
-          >
+          font-roboto m-2 p-2 lg:max-w-md ">
             <Link to={"/details/" + item.id} key={item.id}>
             <span className="self-start text-2xl">{item.title}</span>
             <div className="self-start text-xl">Platform : {item.platform}</div>

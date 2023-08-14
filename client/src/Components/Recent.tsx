@@ -10,6 +10,14 @@ const Recent = () => {
     return date.toDateString();
   };
 
+  const setMax = (length: number) => {
+    var max = 3;
+    if(length < max) {
+      max = length
+    }
+    return max
+  }
+
   useEffect(() => {
     Aos.init();
     getPost({ collection: "project", setResponse: setPosts });
@@ -17,7 +25,7 @@ const Recent = () => {
 
   return (
     <div className="flex flex-col pb-5 items-center bg-recent-bg text-black w-full h-fit">
-      <span className="pt-24 text-3xl font-varela_round font-bold">
+      <span className="pt-24 text-5xl font-varela_round font-bold">
         Recent Projects
       </span>
       <span className="h-1.5 w-24 mt-3 rounded bg-orange self-center"></span>
@@ -36,7 +44,7 @@ const Recent = () => {
         className="flex flex-row flex-wrap px-2 mt-4 
        self-around "
       >
-        {posts.map((item: any) => (
+        {posts.slice(0,setMax(posts.length)).map((item: any) => (
           <div
             data-aos="zoom-in-up"
             data-aos-duration="1000"

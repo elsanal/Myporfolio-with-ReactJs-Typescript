@@ -24,8 +24,7 @@ const Header: React.FC<Props> = ({ names, tos }: Props) => {
     Aos.init();
     getPost({collection:'resume', setResponse:setCV});
   }, []);
-// console.log(cv[0].image[0].base64String)
-// console.log(cv[0].image[0].name)
+
   return (
       <nav  className={`bg-orange fixed w-full px-2 sm:px-4 py-2.5 dark:bg-gray-900`}>
       <div className="container flex flex-wrap items-center justify-between mx-auto">

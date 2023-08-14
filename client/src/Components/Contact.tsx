@@ -52,7 +52,7 @@ const Contact = () => {
                     <div className="flex flex-row justify-around ">                      
                       {contact.network.map((item:any)=>(
                       <a href={item.link}> {item.name}
-                        {/* <img src={item.src.src} className='w-12 h-12 rounded-full' alt=""/> */}
+                        <img src={item.image[0].thumbUrl} className='w-12 h-12 rounded-full' alt=""/>
                       </a>
                     ))}
                     </div>
