@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import getPost from "../mongodb";
 import Aos from "aos";
 
+
 function Resume() {
   const [cv, setCV] = useState<any[]>([]);
   useEffect(() => {
@@ -50,7 +51,7 @@ function Resume() {
             ))}
           </div>
           <div className="flex flex-col w-full p-2 rounded-md bg-blur-bg text-white m-1 md:w-[30%]"
-              data-aos="fade-left" data-aos-duration="1000" data-aos-mirror="true">
+              data-aos="fade-right" data-aos-duration="1000" data-aos-mirror="true">
             <div className="flex flex-col text-3xl font-bold ">Languages</div>
             {cv[0].languages.map((sk: any, index: number) => (
               <div className="mb-5">

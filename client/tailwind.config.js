@@ -31,6 +31,9 @@ module.exports = {
       backgroundImage: {
         'profile-1': "url('/src/Images/profile_img.png')",
         'profile-2': "url('/src/Images/profile_img1.png')",
+        'AI': "url('/service/AI.jpg')",
+        'Web': "url('/service/webapp.jpg')",
+        'Mobile': "url('/service/mobile.jpg')"
       },
       animation: {
         'ping': 'ping 1s cubic-bezier(0, 0, 0.2, 1) 2',

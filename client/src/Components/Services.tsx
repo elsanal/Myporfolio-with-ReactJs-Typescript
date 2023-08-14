@@ -3,13 +3,12 @@ import { useEffect, useState } from "react";
 import ReactHtmlParser from "html-react-parser";
 import getPost from "../mongodb";
 
-
 const Services = () => {
   const [services, setServices] = useState<any>([]);
   useEffect(() => {
     Aos.init();
-    getPost({collection:'service', setResponse:setServices})
-    console.log('service')
+    getPost({ collection: "service", setResponse: setServices });
+    console.log("service");
   }, []);
 
   return (
@@ -22,45 +21,38 @@ const Services = () => {
         Us a freelancer, you can hire me to build different kind of apps or
         others services that are listed below.
       </span>
-      {
-        services.length >0?
+      {services.length > 0 ? (
         <div
-        className="flex flex-row flex-wrap px-2 mt-4 
-        self-around w-full"
-      >
-        {services.map((item:any, index:number) => (
-          <div
-            data-aos="flip-left"
-            data-aos-duration="1000"
-            data-aos-mirror="true"
-            className="flex flex-col bg-blur-bg text-black 
-          font-roboto m-2 w-80 rounded hover:scale-95"
-          >
-            <div className="self-center text-2xl p-2 bg-white w-full">
-              {item.title}
-            </div>
-            <svg
-              xmlns={item.icon_id}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1"
-              stroke="orange"
-              className=" fill-current self-center"
+          className="flex flex-row flex-wrap px-2 mt-4 
+        self-around w-full justify-between items-start"
+        >
+          {services.map((item: any, index: number) => (
+            <div
+              data-aos="flip-left"
+              data-aos-duration="1000"
+              data-aos-mirror="true"
+              className="flex flex-col bg-blur-bg text-black 
+          font-roboto m-2 w-full md:w-[30%] rounded h-fit hover:scale-95"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
-              />
-            </svg>
-            <div className="self-start text-left text-sm bg-gray text-white p-2 rounded-b-md">
-              {ReactHtmlParser(item.description)}
+              <div className="self-center text-2xl p-2 bg-white w-full">
+                {item.title}
+              </div>
+              <div className="flex justify-center items-center ">
+                <img
+                  src={`/images/${item.icon_id}.jpg`}
+                  alt="Description of the image"
+                  className="rounded-lg shadow-lg w-full"
+                />
+              </div>
+              <div className="self-start text-left text-sm bg-gray text-white p-2 rounded-b-md">
+                {ReactHtmlParser(item.description)}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-        :<div>Loading...</div>
-      }
+          ))}
+        </div>
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 };
