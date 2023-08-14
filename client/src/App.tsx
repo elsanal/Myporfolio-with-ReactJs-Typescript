@@ -10,10 +10,11 @@ function App() {
     "Home",
     "Recent projects",
     "Portfolio",
+    "Resume",
     "Services",
     "Contacts"
   ];
-  let routes: string[] = ["home", "recent", "portfolio", "services", "contact"];
+  let routes: string[] = ["home", "recent", "portfolio","resume", "services", "contact"];
 
   return (
     <Suspense fallback="loading">

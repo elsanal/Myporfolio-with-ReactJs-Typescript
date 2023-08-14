@@ -25,7 +25,7 @@ const SinglePage = () => {
       <section id="portfolio" data-aos="fade-down" data-aos-duration="1000" data-aos-mirror="true">
         <Portfolio/>
       </section>
-      <section id="portfolio" data-aos="fade-down" data-aos-duration="1000" data-aos-mirror="true">
+      <section id="resume" data-aos="fade-down" data-aos-duration="1000" data-aos-mirror="true">
         <Resume/>
       </section>
       <section id="services" data-aos="zoom-in" data-aos-duration="1000" data-aos-mirror="true">
