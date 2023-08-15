@@ -77,7 +77,7 @@ const Details = () => {
           </div>
           <div className="flex flex-row mt-5 flex-wrap">
             {detail.image.map((image:any) => (
-              <img src={image.base64String} alt="" className=" m-2 rounded-md" />
+              <img src={image.base64String} alt="" className=" m-2 rounded-md md:max-h-4xl md:max-w-4xl" />
             ))}
           </div>
         </div>
