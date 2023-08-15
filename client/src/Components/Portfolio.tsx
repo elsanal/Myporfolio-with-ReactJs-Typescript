@@ -30,7 +30,7 @@ const Portfolio = () => {
       </span>
       {
         posts.length > 0?
-        <div className="flex flex-row flex-wrap px-2 mt-4 
+        <div className="flex flex-row flex-wrap px-2 mt-4 justify-center
        self-around ">
         {posts.map((item:any) => (
           <div
@@ -39,10 +39,13 @@ const Portfolio = () => {
             data-aos-mirror="true"
             className="flex flex-col w-80 shadow shadow-gray rounded bg-white text-black 
           font-roboto m-2 p-2 lg:max-w-md ">
-            <Link to={"/details/" + item.id} key={item.id}>
-            <span className="self-start text-2xl">{item.title}</span>
+            <Link to={"/details/" + item.id} key={item.id} className="flex flex-col justify-center p-0 h-fit">
+              <div className="bg-black m-0 rounded-md text-white p-1">
+              <span className="self-start text-2xl">{item.title}</span>
             <div className="self-start text-xl">Platform : {item.platform}</div>
-            <img className="self-center w-full pt-2" src={item.image[0].base64String} alt="#" />
+              </div>
+            
+            <img className="self-center pt-2 h-48 w-fit pb-2" src={item.image[0].base64String} alt="#"/>
             </Link>
           </div>
         ))}
