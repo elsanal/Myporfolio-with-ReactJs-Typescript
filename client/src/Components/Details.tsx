@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactHtmlParser from "html-react-parser";
+import Loading from "./Loading";
 
 
 const Details = () => {
@@ -26,19 +27,20 @@ const Details = () => {
   },[detail]);
 
   return (
-    <div className="pt-14 max-w-6xl">
+    <div className="pt-14 w-full h-fit">
       {
         detail.technology?
-        <div className="flex flex-col justify-center  p-2 bg-recent-bg">
-          <span className="font-roboto_italic text-2xl">
+        <div className="flex flex-col justify-center h-full p-2 bg-recent-bg">
+          <span className="font-roboto_italic text-2xl font-bold my-10 md:text-5xl">
             {detail.title}
           </span>
-          <div className="flex flex-row flex-wrap justify-around sm:flex-nowrap">
-            <div className="flex flex-col w-full sm:w-1/4 sm:min-w-sm">
+          <div className="flex flex-col justify-around h-full md:justify-between
+          md:flex-row md:flex-nowrap md:items-center md:bg-blur-bg">
+            <div className="flex flex-col w-full md:max-w-md md:ml-[1%] 
+            text-xl md:h-full md:justify-around">  
               <div
-                className="flex flex-col bg-blur-bg p-2 mb-3 
-              rounded text-white items-start font-roboto_italic"
-              >
+                className="flex flex-col bg-blur-bg p-2 mb-3 text-sm
+              rounded text-white items-start font-roboto_italic">
                 <div>
                   Published : {getDate(detail.createdate)}
                 </div>
@@ -46,6 +48,7 @@ const Details = () => {
                 <div>
                   <a href={detail.github} className="underline text-blue">Click here to access Github</a></div>
               </div>
+
               <div className="bg-blur-bg mb-5 rounded text-white">
                 <div className=" bg-white text-black font-bold w-full">
                   Technologies
@@ -54,6 +57,7 @@ const Details = () => {
                   {ReactHtmlParser(detail.technology)}
                 </p>
               </div>
+
               <div className="bg-blur-bg mb-5 sm:mb-0 pb-2 rounded text-white">
                 <div className=" bg-white text-black font-bold w-full">
                   Social network
@@ -67,17 +71,17 @@ const Details = () => {
                 ))}
               </div>
             </div>
-            <div className="ml-0 p-2 bg-gray text-white rounded sm:ml-2">
+            <div className="ml-0 p-2 w-full bg-gray text-justify text-white text-xl rounded md:ml-2 md:max-w-2xl">
               {ReactHtmlParser(detail.description)}
             </div>
           </div>
           <div className="flex flex-row mt-5 flex-wrap">
             {detail.image.map((image:any) => (
-              <img src={image.base64String} alt="" className="w-96 m-2 rounded-md" />
+              <img src={image.base64String} alt="" className=" m-2 rounded-md" />
             ))}
           </div>
         </div>
-        :<div className="justify-center">Loading...</div>
+        :<div className="flex h-screen w-full bg-black justify-center items-center"><Loading/></div>
       }
       
     </div>

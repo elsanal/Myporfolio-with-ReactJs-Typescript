@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Aos from "aos";
 import { Link } from "react-router-dom";
 import getPost from "../mongodb";
+import Loading from "./Loading";
 
 const Recent = () => {
   const [posts, setPosts] = useState<any>([]);
@@ -66,7 +67,7 @@ const Recent = () => {
           </div>
         ))}
       </div>
-        :<div>Loading...</div>
+        :<div className="flex h-screen w-full bg-black justify-center items-center"><Loading/></div>
       }
     </div>
   );

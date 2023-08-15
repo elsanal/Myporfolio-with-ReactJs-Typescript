@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import getPost from "../mongodb";
 import Aos from "aos";
+import Loading from "./Loading";
 
 
 function Resume() {
@@ -66,9 +67,8 @@ function Resume() {
             ))}
           </div>
         </div>
-      ) : (
-        <div>Laoding...</div>
-      )}
+      ) : <div className="flex h-screen w-full bg-black justify-center items-center"><Loading/></div>
+      }
     </div>
   );
 }

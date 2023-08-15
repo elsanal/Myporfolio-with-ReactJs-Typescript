@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Aos from "aos";
 import { Link } from "react-router-dom";
 import getPost from "../mongodb";
+import Loading from "./Loading";
 
 
 const Portfolio = () => {
@@ -46,7 +47,7 @@ const Portfolio = () => {
           </div>
         ))}
       </div>
-        :<div>Loading...</div>
+        :<div className="flex h-screen w-full bg-black justify-center items-center"><Loading/></div>
       }
     </div>
   );

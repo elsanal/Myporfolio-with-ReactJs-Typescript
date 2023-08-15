@@ -2,6 +2,7 @@ import Aos from "aos";
 import { useEffect, useState } from "react";
 import ReactHtmlParser from "html-react-parser";
 import getPost from "../mongodb";
+import Loading from "./Loading";
 
 const Services = () => {
   const [services, setServices] = useState<any>([]);
@@ -50,9 +51,8 @@ const Services = () => {
             </div>
           ))}
         </div>
-      ) : (
-        <div>Loading...</div>
-      )}
+      ) : <div className="flex h-screen w-full bg-black justify-center items-center"><Loading/></div>
+      }
     </div>
   );
 };

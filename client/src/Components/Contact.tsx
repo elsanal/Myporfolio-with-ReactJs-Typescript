@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Aos from 'aos';
 import getPost from '../mongodb';
+import Loading from './Loading';
 
 const Contact = () => {
 
@@ -62,7 +63,7 @@ const Contact = () => {
               
             </div>
         </div>  
-          :<div>Loading...</div>
+          :<div className="flex h-screen w-full bg-black justify-center items-center"><Loading/></div>
         }      
       </div>
     </form>  
