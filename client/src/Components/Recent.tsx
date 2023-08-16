@@ -43,14 +43,13 @@ const Recent = () => {
         posts.length>0?
         <div
         className="flex flex-row flex-wrap h-fit mt-4 self-around justify-center">
-        {posts.slice(0,setMax(posts.length)).map((item: any) => (
-          <div
+        {posts.slice(0,setMax(posts.length)).map((item: any, index:number) => (
+          <div key={index}
             data-aos="zoom-in-up"
             data-aos-duration="1000"
             data-aos-mirror="true"
             className="flex flex-col w-80 shadow shadow-gray rounded-md bg-white text-black 
-            font-roboto m-2 lg:max-w-md h-fit justify-center p-0"
-          >
+            font-roboto m-2 lg:max-w-md h-fit justify-center p-0">
             <Link to={"/details/" + item.id} key={item.id} className="flex flex-col justify-start p-0 h-fit">
               <div className="bg-black m-0 rounded-tr-md rounded-tl-md text-white">
               <span className="self-start text-2xl">{item.title}</span>

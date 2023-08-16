@@ -24,7 +24,7 @@ const Details = () => {
       })
     };
    getPost(id);
-  },[detail]);
+  },[id]);
 
   return (
     <div className="pt-14 w-full h-fit">
@@ -62,8 +62,8 @@ const Details = () => {
                 <div className=" bg-white text-black font-bold w-full">
                   Social network
                 </div>
-                {detail.socials.map((social:any) => (
-                  <div>
+                {detail.socials.map((social:any, index:number) => (
+                  <div key={index}>
                     <Link className="text-orange-clair" to={social.link}>
                       {social.name}
                     </Link>
@@ -76,8 +76,8 @@ const Details = () => {
             </div>
           </div>
           <div className="flex flex-row mt-5 flex-wrap">
-            {detail.image.map((image:any) => (
-              <img src={image.base64String} alt="" className=" m-2 rounded-md md:max-w-2xl" />
+            {detail.image.map((image:any, index:number) => (
+              <img key={index} src={image.base64String} alt="" className=" m-2 rounded-md md:max-w-2xl" />
             ))}
           </div>
         </div>

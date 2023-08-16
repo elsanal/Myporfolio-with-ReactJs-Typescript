@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import getPost from "../mongodb";
 import Aos from "aos";
 import Loading from "./Loading";
@@ -26,8 +26,8 @@ function Resume() {
           <div className="flex flex-col w-full p-2 rounded-md bg-blur-bg text-white m-1 md:w-[30%]"
                 data-aos="fade-right" data-aos-duration="1000" data-aos-mirror="true">
             <div className="flex flex-col text-3xl font-bold ">Experiences</div>
-            {cv[0].experiences.map((sk: any) => (
-              <div className="mb-5">
+            {cv[0].experiences.map((sk: any, index:number) => (
+              <div className="mb-5" key={`exp-${index}`}>
                 <div className="flex w-full justify-between">
                   <span><span className="text-white text-xl">☀</span> {sk.experience}</span>
                 </div>
@@ -38,7 +38,7 @@ function Resume() {
                 data-aos="zoom-in-down" data-aos-duration="1000" data-aos-mirror="true">
             <div className="flex flex-col text-3xl font-bold ">Skills</div>
             {cv[0].skills.map((sk: any, index: number) => (
-              <div className="mb-5">
+              <div className="mb-5" key={`sk-${index}`}>
                 <div className="flex w-full justify-between">
                   <span>{sk.name}</span>
                   <span>{sk.level}</span>
@@ -55,7 +55,7 @@ function Resume() {
               data-aos="fade-right" data-aos-duration="1000" data-aos-mirror="true">
             <div className="flex flex-col text-3xl font-bold ">Languages</div>
             {cv[0].languages.map((sk: any, index: number) => (
-              <div className="mb-5">
+              <div className="mb-5" key={`lg-${index}`}>
                 <div className="flex w-full justify-between">
                   <span>{sk.name}</span>
                   <span>{sk.level}</span>

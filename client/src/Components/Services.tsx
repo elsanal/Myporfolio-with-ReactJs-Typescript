@@ -9,7 +9,6 @@ const Services = () => {
   useEffect(() => {
     Aos.init();
     getPost({ collection: "service", setResponse: setServices });
-    console.log("service");
   }, []);
 
   return (
@@ -28,13 +27,12 @@ const Services = () => {
         self-around w-full justify-between items-start"
         >
           {services.map((item: any, index: number) => (
-            <div
+            <div key={index}
               data-aos="flip-left"
               data-aos-duration="1000"
               data-aos-mirror="true"
               className="flex flex-col bg-blur-bg text-black 
-          font-roboto m-2 w-full md:w-[30%] rounded h-fit hover:scale-95"
-            >
+          font-roboto m-2 w-full md:w-[30%] rounded h-fit hover:scale-95">
               <div className="self-center text-2xl p-2 bg-white w-full">
                 {item.title}
               </div>

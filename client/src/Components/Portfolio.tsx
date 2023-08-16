@@ -32,8 +32,8 @@ const Portfolio = () => {
         posts.length > 0?
         <div className="flex flex-row flex-wrap px-2 mt-4 justify-center
        self-around ">
-        {posts.map((item:any) => (
-          <div
+        {posts.map((item:any, index:number) => (
+          <div key={index}
             data-aos="zoom-in-up"
             data-aos-duration="1000"
             data-aos-mirror="true"

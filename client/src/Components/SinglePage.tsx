@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect} from "react";
 import Home from "./Home";
 import Recent from "./Recent";
 import Portfolio from "./Portfolio";
